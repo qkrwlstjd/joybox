@@ -21,6 +21,8 @@ header {
   color: #fff;
   padding: 1rem;
   position: relative;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 header h1 {
@@ -85,22 +87,35 @@ header a {
   font-weight: bold;
 }
 
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333333;
+    padding: 1rem;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 5em;
+  }
+
 /* Media Queries */
 @media (max-width: 768px) {
-  html,
-  body {
-    font-size: 14px;
-  }
-  
+    
   header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
   
+  header .header-item{
+    flex:1;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   header h1 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
   }
   
   header button {
@@ -109,11 +124,6 @@ header a {
   
   header a {
     font-size: 0.875rem;
-    margin-right: 1rem;
-  }
-  
-  .post {
-    margin-top: 1rem;
   }
   
   .post-image {
@@ -133,20 +143,12 @@ header a {
   }
 }
 
-@media (max-width: 480px) {
-  .post-image {
-    height: 150px;
-  }
+@media (max-width: 767px) {
+    .post {
+      margin-top: 1rem;
+    }
   
-  .post-content h2 {
-    font-size: 1.125rem;
+    .post-image {
+      height: 200px;
+    }
   }
-  
-  .post-content p {
-    font-size: 1rem;
-  }
-  
-  .post-content a {
-    font-size: 1rem;
-  }
-}
