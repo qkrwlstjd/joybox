@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JoyBot</title>
+  <link rel="stylesheet" href="/stylesheets/reset.css">
+  <link rel="stylesheet" href="/stylesheets/chat.css">
+  <link rel="stylesheet" href="/stylesheets/fontawesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <main class="chat-container">
+    <header class="chat-header">
+      <h1>JoyBot</h1>
+      <p>Recommend your products</p>
+    </header>
+    <div class="chat-content">
+      <div class="chat-bubble">
+        <p class="chat-message">Hello, how can I help you?</p>
+      </div>
+      <div class="chat-bubble chat-bubble-response">
+        <p class="chat-message">I am looking for a new pair of shoes.</p>
+      </div>
+      <div class="chat-bubble">
+        <p class="chat-message">What kind of shoes are you interested in?</p>
+      </div>
+      <div class="chat-bubble chat-bubble-response">
+        <p class="chat-message">I need running shoes with good arch support.</p>
+      </div>
+      <div class="chat-bubble">
+        <p class="chat-message">I recommend you check out our new line of running shoes with built-in arch support. Would you like me to show you some options?</p>
+      </div>
+    </div>
+    <form class="chat-input" action="/chat" method="POST">
+      <input type="text" name="message" placeholder="Type your message here">
+      <button type="submit" name="send"><i class="fas fa-paper-plane"></i></button>
+    </form>      
+  </main>
+</body>
+</html>
