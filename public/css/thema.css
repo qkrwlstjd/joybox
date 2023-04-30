@@ -1,0 +1,20 @@
+/* Theme Colors */
+:root {
+    --primary-color: #F1C40F;
+    --secondary-color: #FADBD8;
+    --text-color: #333;
+
+    /* --primary-color: #ff2e63;
+    --secondary-color: #eeeeee; */
+  
+
+
+    --text-color-white: #fff;
+    --border-color-gray: #ccc;
+    --background-color-white: #fff;
+
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  
+  
