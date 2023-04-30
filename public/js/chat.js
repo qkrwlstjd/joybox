@@ -7,7 +7,6 @@ socket.on('message', message => {
   outputMessage(message);
 
   // Scroll down
-  chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
 chatForm.addEventListener('submit', e => {
@@ -35,7 +34,9 @@ function outputMessage(message, isSent) {
   div.classList.add('chat-bubble');
   if (isSent) {
     div.classList.add('chat-bubble-response');
+    chatMessages.scrollTop = chatMessages.scrollHeight;
   }
   div.innerHTML = `<p class="chat-message">${message}</p>`;
   chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 }
