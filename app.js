@@ -4,7 +4,7 @@ const http = require('http');
 const path = require('path');
 const socketio = require('socket.io');
 const indexRouter = require('./routes/index');
-const openai = require('./generate');
+const AIAssistant = require('./generate');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -26,16 +26,12 @@ app.use((req, res) => {
 // Socket.io
 io.on('connection',  socket => {
   console.log('New WebSocket connection');
-
+  openai = new AIAssistant()
   socket.emit('message', 'Hello, how can I help you?');
   socket.on('chatMessage', async message => {
-    const model = 'text-davinci-002';
-    const maxTokens = 5;
-
-    console.log(`receive : ${message}`);
-    const res_message = await openai(message)
-    // io.emit('message', `receive : ${message}`);
-    io.emit('message',res_message);
+    const res_message = await openai.generateResponse(message)
+    io.emit('message',res_message['chat']);
+    io.emit('message',res_message['result']);
   });
 
   socket.on('disconnect', () => {
