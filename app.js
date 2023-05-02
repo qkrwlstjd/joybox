@@ -9,7 +9,6 @@ const options = {
 
 const express = require("express");
 const path = require("path");
-const socketio = require("socket.io");
 const indexRouter = require("./routes/index");
 const AIAssistant = require("./generate");
 const app = express();
@@ -18,7 +17,7 @@ const httpServer = http.createServer((req, res) => {
   res.writeHead(301, { "Location": `https://${req.headers.host}${req.url}` });
   res.end();
 });
-const io = socketio(httpsServer);
+const server = https.createServer(options, app);
 const bodyParser = require("body-parser");
 
 // Set static folder
