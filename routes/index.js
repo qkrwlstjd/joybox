@@ -5,7 +5,7 @@ const db = require("../db");
 
 // Index route
 router.get("/", (req, res) => {
-  res.render("index");
+  res.render("chat");
 });
 
 // Chat route

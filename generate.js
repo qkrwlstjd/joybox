@@ -89,6 +89,7 @@ function createMsg(msg) {
         }
       }
     }
+	  new_array.push("\n\nJoybot은 쿠팡파트너스 활동을 통해 일정액의 수수료를 제공받을 수 있습니다.")
   }
   n_msg = new_array.join("<br>");
   return n_msg;
