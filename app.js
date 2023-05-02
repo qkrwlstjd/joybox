@@ -1,65 +1,29 @@
-const OPENAI_API_KEY = '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';
-
-const express = require('express');
-const http = require('http');
-const path = require('path');
-const socketio = require('socket.io');
-const indexRouter = require('./routes/index');
-
+const express = require("express");
+const http = require("http");
+const path = require("path");
+const socketio = require("socket.io");
+const indexRouter = require("./routes/index");
+const AIAssistant = require("./generate");
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-// const openai = require('openai');
-// openai.apiKey=OPENAI_API_KEY;
-
-
-// const { OpenAI } = require('openai');
-// const openai = new OpenAI(OPENAI_API_KEY);
+const bodyParser = require("body-parser");
 
 // Set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
+// Middleware for parsing JSON and URL-encoded data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set view engine
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 // Routes
-app.use('/', indexRouter);
+app.use("/", indexRouter);
 app.use((req, res) => {
-  res.status(404).send('Page not found');
+  res.status(404).send("Page not found");
 });
-
-
-// Socket.io
-io.on('connection', socket => {
-  console.log('New WebSocket connection');
-
-  socket.emit('message', 'Hello, how can I help you?');
-  socket.on('chatMessage', message => {
-    const model = 'text-davinci-002';
-    const maxTokens = 5;
-
-    console.log(`receive : ${message}`);
-    io.emit('message', `receive : ${message}`);
-
-    // openai.complete({
-    //   engine: model,
-    //   prompt: message,
-    //   maxTokens: maxTokens,
-    // }).then((response) => {
-    //   console.log(`response : ${response.choices[0].text}`);
-    //   io.emit('message', `${response.choices[0].text}`);
-    // }).catch((error) => {
-    //   console.error(error);
-    //   io.emit('message', `error: '${error}'`);
-    // });
-  });
-
-  socket.on('disconnect', () => {
-    console.log('WebSocket disconnected');
-  });
-});
-
 
 const PORT = process.env.PORT || 3000;
 

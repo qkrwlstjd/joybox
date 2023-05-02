@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JoyBot</title>
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/chat.css">
-  <link rel="stylesheet" href="/css/fontawesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <script src="/socket.io/socket.io.js"></script>
-</head>
-<body>
-  <header>
-    <div>
-  </div>
-    <div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JoyBot</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/chat.css" />
+    <link rel="stylesheet" href="/css/fontawesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div></div>
+      <div>
         <h1>JOYBOT</h1>
-    </div>
-    <div>
-  </div>
-</header>
-  <main class="container">
-    <div class="chat-content">
-    </div>
-    <form class="chat-input" action="/chat" method="POST">
-      <input type="text" name="message" placeholder="Type your message here">
-      <button type="submit" name="send"><i class="fas fa-paper-plane"></i></button>
-    </form>      
-  </main>
-</body>
-<script src="/js/chat.js"></script>
+      </div>
+      <div></div>
+    </header>
+    <main class="container">
+      <div class="chat-content">
+        <div class="chat-bubble">
+          <p class="chat-message">안녕하세요! 선물추천 도우미 JoyBot입니다!</p>
+        </div>
+      </div>
+      <form class="chat-input" action="/chat" method="POST">
+        <input
+          type="text"
+          name="message"
+          placeholder="Type your message here"
+        />
+        <button type="submit" name="send">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
+    </main>
+  </body>
+  <script src="/js/chat.js"></script>
 </html>
