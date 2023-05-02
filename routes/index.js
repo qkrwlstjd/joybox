@@ -31,11 +31,11 @@ router.post("/chat", async (req, res) => {
   }
 });
 
-router.get("/chat/list", async (req, res) => {
-  const username = req.query.username;
-  message = await db.getMessage(username);
-  res.json(message);
-});
+// router.get("/chat/list", async (req, res) => {
+//   const username = req.query.username;
+//   message = await db.getMessage(username);
+//   res.json(message);
+// });
 
 // router.post("/chat/new", async (req, res) => {
 //   const username = req.body.username;
