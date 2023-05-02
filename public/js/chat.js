@@ -2,6 +2,16 @@ const chatForm = document.querySelector(".chat-input");
 const chatMessages = document.querySelector(".chat-content");
 
 const id = uuidv4(); // 랜덤 UUID 생성
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+window.addEventListener("resize", () => {
+  console.log("resize");
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+});
+
+document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 chatForm.addEventListener("submit", (e) => {
   e.preventDefault();
