@@ -56,6 +56,7 @@ function createMsg(msg) {
 
   const regex = /\[(.*?)\]/g;
   const matches = msg.match(regex);
+  let coopang = false;
   if (matches) {
     try {
       for (let i = 0; i < matches.length; i++) {
@@ -85,13 +86,14 @@ function createMsg(msg) {
     for (let i = 0; i < new_array.length; i++) {
       for (let j = 0; j < item_array.length; j++) {
         if (new_array[i].indexOf(item_array[j]) !== -1) {
+          coopang = true;
           let a_tag = `<a href='https://www.coupang.com/np/search?lptag=AF3521584&component=&channel=user&q=${item_array[j]}'>${item_array[j]}</a>`;
           new_array[i] = new_array[i].replace(item_array[j], a_tag);
         }
       }
     }
   }
-  if (item_array.length > 0) {
+  if (coopang) {
     new_array.push(
       "<br><br>Joybot은 쿠팡파트너스 활동을 통해 일정액의 수수료를 제공받을 수 있습니다."
     );
