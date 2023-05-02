@@ -55,11 +55,9 @@ function outputMessage(message, isSent) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-function lastMessageChange() {}
-
 function lastMessageChange(message) {
   const lastMessage = chatMessages.lastChild.querySelector(
     ".chat-message:not(.chat-bubble-response)"
   );
-  lastMessage.textContent = message;
+  lastMessage.innerHTML = message;
 }

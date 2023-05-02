@@ -16,13 +16,13 @@ async function generateResponse(username, message) {
   }
 
   try {
-    //     message = `${message}
-    // 제품이 있다면 제일 마지막줄에
-    // [__,__,__]
-    // 로 요약해줘`;
+    message = `${message}
+    제품이 있다면 제일 마지막줄에
+    [__,__,__]
+    로 요약해줘`;
     await db.saveMessage(username, "user", message, 0);
     let messages = await db.getMessage(username, CHAT_LIMIT);
-    while (getByteSize(messages) / 2.5 > 2000) {
+    while (getByteSize(messages) / 2 > 2000) {
       messages.splice(1, 2);
     }
 
@@ -30,7 +30,7 @@ async function generateResponse(username, message) {
       model: "gpt-3.5-turbo",
       messages: messages,
       temperature: 0.5,
-      max_tokens: 3500,
+      max_tokens: 2000,
     });
     const resmsg = response.data.choices[0].message.content;
     await db.saveMessage(
@@ -59,7 +59,8 @@ function createMsg(msg) {
   if (matches) {
     try {
       for (let i = 0; i < matches.length; i++) {
-        n_msg = msg.replace(matches[i], "");
+        console.log(matches[i]);
+        n_msg = msg.replaceAll(matches[i], "");
         item_array = item_array.concat(
           matches[i]
             .replace("등", "")
@@ -89,7 +90,11 @@ function createMsg(msg) {
         }
       }
     }
-	  new_array.push("\n\nJoybot은 쿠팡파트너스 활동을 통해 일정액의 수수료를 제공받을 수 있습니다.")
+  }
+  if (item_array.length > 0) {
+    new_array.push(
+      "<br><br>Joybot은 쿠팡파트너스 활동을 통해 일정액의 수수료를 제공받을 수 있습니다."
+    );
   }
   n_msg = new_array.join("<br>");
   return n_msg;
